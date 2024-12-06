@@ -44,7 +44,7 @@ export default function Home() {
           </h2>
           <p className="text-lg text-dark/80 text-center mb-10">
             Experience the essence of Provence through our exclusive vineyard and olive grove project. 
-            Nestled in the heart of France's most celebrated wine region, this unique venture offers 
+            Nestled in the heart of France&apos;s most celebrated wine region, this unique venture offers 
             GSB community members the opportunity to be part of a distinctive lifestyle investment, 
             combining the pleasures of wine-making with the charm of Provençal living.
           </p>
