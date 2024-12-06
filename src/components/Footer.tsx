@@ -40,17 +40,20 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-cream mt-auto" aria-labelledby="footer-heading">
+    <footer className="bg-cream mt-auto border-t border-gray-200/30" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <Link href="/" className="text-2xl font-serif text-lavender">
+            <Link 
+              href="/" 
+              className="text-2xl font-serif text-lavender hover:text-lavender/80 transition-colors duration-300"
+            >
               GSB Vineyard
             </Link>
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-dark/70">
               An exclusive vineyard and olive grove project in Provence for the Stanford GSB community.
             </p>
             <div className="flex space-x-6">
@@ -58,7 +61,7 @@ export default function Footer() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-500 hover:text-lavender"
+                  className="social-icon"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -70,11 +73,14 @@ export default function Footer() {
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-gray-900">Navigation</h3>
+              <h3 className="text-sm font-semibold leading-6 text-dark">Navigation</h3>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.main.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-lavender">
+                    <Link 
+                      href={item.href} 
+                      className="text-sm leading-6 text-dark/70 hover:text-dark transition-colors duration-200"
+                    >
                       {item.name}
                     </Link>
                   </li>
@@ -82,15 +88,21 @@ export default function Footer() {
               </ul>
             </div>
             <div className="mt-10 md:mt-0">
-              <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+              <h3 className="text-sm font-semibold leading-6 text-dark">Legal</h3>
               <ul role="list" className="mt-6 space-y-4">
                 <li>
-                  <Link href="/privacy" className="text-sm leading-6 text-gray-600 hover:text-lavender">
+                  <Link 
+                    href="/privacy" 
+                    className="text-sm leading-6 text-dark/70 hover:text-dark transition-colors duration-200"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-sm leading-6 text-gray-600 hover:text-lavender">
+                  <Link 
+                    href="/terms" 
+                    className="text-sm leading-6 text-dark/70 hover:text-dark transition-colors duration-200"
+                  >
                     Terms & Conditions
                   </Link>
                 </li>
@@ -99,7 +111,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-500">
+          <p className="text-xs leading-5 text-dark/60">
             &copy; {new Date().getFullYear()} GSB Vineyard & Olive Grove Project. All rights reserved.
           </p>
         </div>

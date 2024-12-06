@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -13,20 +13,34 @@ const navigation = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-cream/80 backdrop-blur-sm fixed w-full z-50 border-b border-gray-200">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-cream/95 backdrop-blur-md header-shadow' : 'bg-cream/80 backdrop-blur-sm'
+    }`}>
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-serif text-lavender">
+            <Link 
+              href="/" 
+              className="text-2xl font-serif text-lavender hover:text-lavender/80 transition-colors duration-300"
+            >
               GSB Vineyard
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-6">
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
             {navigation.map((link) => (
               <Link
                 key={link.name}
@@ -38,7 +52,7 @@ export default function Header() {
             ))}
             <Link
               href="/join"
-              className="btn-primary ml-4 text-sm font-medium"
+              className="btn-primary text-sm"
             >
               Join the Community
             </Link>
@@ -48,7 +62,7 @@ export default function Header() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="text-gray-700 hover:text-lavender"
+              className="text-dark/80 hover:text-dark transition-colors duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="sr-only">Open menu</span>
@@ -66,29 +80,33 @@ export default function Header() {
         </div>
 
         {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="block nav-link rounded-md px-3 py-2 text-base font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+        <div
+          className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
+        >
+          <div className="space-y-2 px-2 pb-3 pt-2">
+            {navigation.map((link) => (
               <Link
-                href="/join"
-                className="block btn-primary mt-4 text-center"
+                key={link.name}
+                href={link.href}
+                className="mobile-nav-link"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Join the Community
+                {link.name}
               </Link>
-            </div>
+            ))}
+            <Link
+              href="/join"
+              className="btn-primary mt-4 w-full flex justify-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Join the Community
+            </Link>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );
