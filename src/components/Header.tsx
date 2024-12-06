@@ -6,10 +6,9 @@ import { useState, useEffect } from 'react';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About the Project', href: '/about' },
+  { name: 'About', href: '/about' },
   { name: 'Membership', href: '/membership' },
-  { name: 'Expertise Contribution', href: '/expertise' },
-  { name: 'Contact Us', href: '/contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Header() {
