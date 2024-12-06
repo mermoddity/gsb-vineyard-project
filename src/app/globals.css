@@ -2,12 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-lavender: #7E5A9B;
-  --color-olive: #708238;
-  --color-gold: #C6A664;
-  --color-cream: #F9F6F1;
-  --color-dark: #1A1A1A;
+@layer utilities {
+  .bg-cream {
+    background-color: #F9F6F1;
+  }
+  .text-dark {
+    color: #1A1A1A;
+  }
+  .bg-olive {
+    background-color: #5C6F4C;
+  }
+  .bg-olive-light {
+    background-color: #8B9D77;
+  }
+  .bg-olive-dark {
+    background-color: #445239;
+  }
+  .text-earth {
+    color: #9C8B7D;
+  }
+  .text-earth-light {
+    color: #D4C5B9;
+  }
+  .text-earth-dark {
+    color: #6B5D52;
+  }
+  .bg-sage {
+    background-color: #B7C4B1;
+  }
 }
 
 @layer base {
@@ -15,40 +37,48 @@
     @apply bg-cream text-dark antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif text-earth-dark;
+  }
+  p {
+    @apply text-dark/80;
+  }
+  a {
+    @apply transition-colors duration-200;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply relative bg-gold text-white px-6 py-2.5 rounded-lg font-medium
-           shadow-[0_2px_8px_rgba(198,166,100,0.25)]
-           transition-all duration-300 ease-out
-           hover:shadow-[0_4px_12px_rgba(198,166,100,0.35)]
-           hover:translate-y-[-2px]
-           active:translate-y-[0px];
+    @apply inline-flex items-center justify-center px-6 py-2.5 
+           text-sm font-medium text-white 
+           bg-olive hover:bg-olive-dark 
+           rounded-full transition-all duration-200 ease-smooth
+           hover:shadow-lg hover:-translate-y-0.5 
+           active:translate-y-0;
   }
-
+  
   .nav-link {
-    @apply relative text-dark/80 hover:text-dark transition-colors duration-200
-           after:absolute after:left-0 after:bottom-[-4px]
-           after:w-0 after:h-[2px] after:bg-lavender
-           after:transition-all after:duration-300
-           hover:after:w-full;
+    @apply text-sm font-medium text-dark/70 
+           hover:text-dark relative 
+           transition-colors duration-200;
   }
-
-  .social-icon {
-    @apply text-gray-500 hover:text-lavender transform hover:scale-110
-           transition-all duration-300 ease-out;
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 
+           w-full h-0.5 bg-olive-light 
+           transform scale-x-0 
+           transition-transform duration-200 ease-smooth;
   }
-
+  
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+  
   .mobile-nav-link {
-    @apply block w-full px-4 py-2 text-base font-medium text-dark/80
-           hover:bg-lavender/10 hover:text-dark
-           transition-all duration-200 rounded-lg;
-  }
-
-  .header-shadow {
-    @apply shadow-[0_2px_8px_rgba(0,0,0,0.05)];
+    @apply block px-4 py-2.5 
+           text-base font-medium 
+           text-dark/70 hover:text-dark 
+           hover:bg-olive-light/10 rounded-lg 
+           transition-colors duration-200;
   }
 }

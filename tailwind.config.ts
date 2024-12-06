@@ -1,26 +1,38 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
-const config: Config = {
+const config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        lavender: "var(--color-lavender)",
-        olive: "var(--color-olive)",
-        gold: "var(--color-gold)",
-        cream: "var(--color-cream)",
+        cream: '#F9F6F1',
+        dark: '#1A1A1A',
+        olive: {
+          light: '#8B9D77',
+          DEFAULT: '#5C6F4C',
+          dark: '#445239'
+        },
+        earth: {
+          light: '#D4C5B9',
+          DEFAULT: '#9C8B7D',
+          dark: '#6B5D52'
+        },
+        sage: '#B7C4B1',
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-lato)", "sans-serif"],
+        serif: ['var(--font-playfair)'],
+        sans: ['var(--font-lato)'],
       },
+      transitionTimingFunction: {
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      }
     },
   },
   plugins: [],
-};
+} satisfies Config
 
-export default config;
+export default config

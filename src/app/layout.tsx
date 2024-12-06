@@ -29,9 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
-      <body className="min-h-screen flex flex-col font-sans">
+      <body className="min-h-screen flex flex-col bg-cream text-dark antialiased font-sans">
         <Header />
-        <main className="flex-grow pt-16">{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

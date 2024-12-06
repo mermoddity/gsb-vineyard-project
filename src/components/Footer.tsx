@@ -3,15 +3,24 @@ import Link from 'next/link';
 const navigation = {
   main: [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
+    { name: 'About the Project', href: '/about' },
     { name: 'Membership', href: '/membership' },
-    { name: 'Expertise', href: '/expertise' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Expertise Contribution', href: '/expertise' },
+    { name: 'Contact Us', href: '/contact' },
   ],
   social: [
     {
+      name: 'LinkedIn',
+      href: '#',
+      icon: (props: any) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      ),
+    },
+    {
       name: 'Instagram',
-      href: 'https://www.instagram.com/gsb_vineyard',
+      href: '#',
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -23,15 +32,24 @@ const navigation = {
       ),
     },
     {
-      name: 'WhatsApp',
+      name: 'Facebook',
       href: '#',
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
-            d="M19.355 4.645A9.918 9.918 0 0012.018 2c-5.485 0-9.95 4.464-9.95 9.949 0 1.752.458 3.463 1.329 4.97L2 22l5.233-1.237a9.916 9.916 0 004.738 1.194h.004c5.485 0 9.95-4.464 9.95-9.95 0-2.659-1.035-5.159-2.914-7.038zm-7.337 15.313h-.003a8.234 8.234 0 01-4.197-1.148l-.301-.179-3.123.819.833-3.043-.196-.312a8.234 8.234 0 01-1.26-4.386c0-4.559 3.71-8.269 8.27-8.269 2.209 0 4.283.861 5.842 2.42a8.27 8.27 0 012.42 5.842c0 4.559-3.71 8.269-8.27 8.269zm4.542-6.193c-.249-.124-1.472-.726-1.7-.81-.228-.083-.394-.124-.56.125-.166.248-.643.81-.788.975-.145.166-.29.186-.54.062-.248-.124-1.05-.387-2-1.234-.74-.659-1.239-1.473-1.384-1.722-.145-.248-.015-.382.109-.506.112-.112.249-.29.373-.435.124-.145.166-.248.249-.414.083-.165.041-.31-.021-.434-.062-.124-.56-1.35-.768-1.848-.202-.487-.407-.42-.56-.428-.145-.007-.31-.009-.477-.009-.166 0-.435.062-.663.31-.228.249-.871.852-.871 2.077 0 1.226.891 2.41 1.016 2.576.124.166 1.752 2.677 4.25 3.756.594.256 1.058.41 1.419.526.596.19 1.138.163 1.567.099.478-.071 1.472-.602 1.679-1.184.207-.581.207-1.079.145-1.184-.062-.104-.228-.165-.477-.29z"
+            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
             clipRule="evenodd"
           />
+        </svg>
+      ),
+    },
+    {
+      name: 'Twitter',
+      href: '#',
+      icon: (props: any) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
         </svg>
       ),
     },
@@ -53,15 +71,16 @@ export default function Footer() {
             >
               GSB Vineyard
             </Link>
-            <p className="text-sm leading-6 text-dark/70">
+            <p className="text-sm leading-6 text-dark/70 max-w-md">
               An exclusive vineyard and olive grove project in Provence for the Stanford GSB community.
+              Join us in creating a unique legacy while embracing the art of winemaking.
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="social-icon"
+                  className="text-dark/60 hover:text-lavender transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
